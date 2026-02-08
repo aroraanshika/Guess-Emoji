@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Interval</title>
+</head>
+<body>
+    <h1> Set Interval</h1>
+    <h2 id="h2_tag"></h2>
+    <button>click me</button>
+
+    <script>
+        const textelement = document.querySelector("h1");
+        const btn = document.querySelector("button");
+
+        let count = 0;
+        textelement.textContent = `${count}`;
+
+         btn.addEventListener("click" , ()=>{
+        const timer = setInterval(()=>{
+             count++;
+            textelement.textContent = `${count}`;
+
+            if(count >= 4){
+                clearInterval(timer);
+            }
+           },1000
+        )
+        });
+    </script>
+</body>
+</html>

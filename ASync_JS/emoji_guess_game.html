@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Guess</title>
+</head>
+<body>
+    <div>
+        <h1>Emoji Guessing Game</h1>
+        <div id="description"></div>
+        <input type="text" id="guess-input" placeholder="Enter your guess">
+        <div id="results"></div>
+        <div id="score">Score: 0</div>
+        <div id="timer"></div>
+        <button class="button" id="restart-button" style="display: none">
+            Restart
+        </button>
+    </div>
+    
+
+    <script>
+         const emojidetails = [
+            {
+            description: "smiling face",
+            emoji: "😊"
+            },
+            {
+            description: "Oops",
+            emoji: "😅"
+            },
+            {
+            description: "Angel",
+            emoji: "😇"
+            },
+            {
+            description: "Awkward",
+            emoji: "🙂"
+            },
+        
+        ]
+
+        let currentEmojiIndex = 0;
+        let score = 0;
+        let seconds = 10;
+        let timer;
+
+        const timerElement = document.getElementById("timer");
+
+        const GuessInput = document.getElementById('guess-input');
+        const resultElement = document.getElementById('results');
+        const scoreElement = document.getElementById('score');
+
+        function displayEmoji(){
+            const descriptionElement = document.getElementById('description');
+            descriptionElement.textContent= emojidetails[currentEmojiIndex].emoji;
+            timerElement.textContent= `Time : ${seconds}s`    
+        }
+
+
+
+        function checkGuess(){
+            const guess = GuessInput.value.trim().toLowerCase();
+            const correctAnswer = emojidetails[currentEmojiIndex].description.toLowerCase();
+            if(guess == correctAnswer){
+                
+                resultElement.textContent = "✅ Correct!";
+                score++;
+            }
+            else{
+                resultElement.textContent = " Wrong!";
+               
+                
+            }
+            nextEmoji();
+            GuessInput.value = "";
+            GuessInput.focus();
+            scoreElement.textContent = `Score: ${score}`;
+            
+        }
+
+        function nextEmoji(){
+            currentEmojiIndex++;
+             setTimeout(()=>{
+                    resultElement.textContent = " ";
+                },1000)
+
+            if(currentEmojiIndex === emojidetails.length){
+                currentEmojiIndex = 0;
+            }
+
+            displayEmoji();
+            
+            
+        }
+
+        document.getElementById('guess-input')
+        .addEventListener('keydown' , (event)=>{
+            if(event.key == 'Enter'){
+                checkGuess();
+            }
+        });
+
+        document.addEventListener(
+            'DOMContentLoaded',
+            ()=>{
+                displayEmoji();
+                startTimer();
+            }
+        )
+
+        function startTimer(){
+           
+            timer = setInterval(()=>{
+
+                 seconds--;
+                 timerElement.textContent= `Time : ${seconds}s` 
+                 
+                 if(seconds <= 0 ){
+                    endGame();
+                 }
+                },1000)
+
+                
+        }
+
+        function endGame(){
+            clearInterval(timer);
+            GuessInput.disabled = true;
+            timerElement.textContent = '';
+        }
+
+
+    </script>
+</body>
+</html>

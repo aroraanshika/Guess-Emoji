@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1></h1>
+
+    <button> click me</button>
+
+    <script>
+        const h1_tag = document.querySelector("h1");
+        const click_btn = document.querySelector("button");
+        
+        click_btn.addEventListener("click" , ()=>{
+            h1_tag.textContent = "text here";
+
+            setTimeout(() =>{
+                h1_tag.textContent = '';
+            }, 3000 
+            );
+        });
+    </script>
+    
+</body>
+</html>

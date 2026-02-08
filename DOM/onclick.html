@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="first" onclick="alert('first click')">content added</h1>
+    <h2 class="heading"> Clicking Removes me</h2>
+
+    <ul id="list">
+ <li>Item 1</li>
+ <li>New Item</li> <!-- Newly inserted item -->
+ <li class="current">Item 2</li>
+ <li>Item 3</li>
+</ul>
+    <script>
+
+        // const hpointer = document.querySelector("h2");
+        // hpointer.addEventListener(
+        //     'click' ,function (){
+        //         hpointer.remove();
+        //         console.log("removed");
+        //     }
+        // );
+
+        let current = document.querySelector('.current');
+        console.log('Next sibling element:',
+        current.nextElementSibling.textContent);
+        
+    </script>
+</body>
+</html>

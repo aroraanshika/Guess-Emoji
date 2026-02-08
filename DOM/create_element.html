@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="first"> Document Object Model</h1>
+    <p id="para"> Let's Learn more about DOM Manipulation</p>
+    <div>
+        <h3>Inner Heading</h3>
+    </div>
+
+    <script>
+        const btn = document.createElement('button');
+        btn.textContent = 'Click Here';
+        btn.className = 'btn1';
+
+        const division = document.querySelector('div');
+        division.appendChild(btn);
+
+        const new_para = document.createElement('paragraph');
+        new_para.textContent = ' content adding here'
+        new_para.className = 'para-new';
+
+        const new_paragraph = document.querySelector('#para');
+        new_paragraph.appendChild(new_para)
+    </script>
+</body>
+</html>
