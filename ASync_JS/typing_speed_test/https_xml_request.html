@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .user-card {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    background: #f2f2f2;
+    padding: 2rem;
+    border-radius: 8px;
+}
+.user-card img {
+    width: 50%;
+}
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="user-card">
+            <img src="https://robohash.org/hicveldicta.png" alt="Profile Image">
+            <h3> John</h3>
+            <h3>Doe</h3>
+            <p class="email"> j.doe@gmail.com</p>
+            <button class="btn">View Profile</button>
+        </div>
+    </div>
+
+    <script>
+        const divEle = document.querySelector('.card-container');
+        // now make use of xmlhttp request 
+
+        const new_request = new XMLHttpRequest();
+        new_request.open("GET","https://dummyjson.com/users/1");
+        // now request has been created and send server will send the json
+        new_request.send();
+
+        // data is fetched now need to use the data 
+        //
+        new_request.addEventListener("load" , function(){
+            console.log(new_request.responseText)
+        });
+    </script>
+</body>
+</html>
